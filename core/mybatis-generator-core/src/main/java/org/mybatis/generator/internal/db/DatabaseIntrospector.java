@@ -297,8 +297,8 @@ public class DatabaseIntrospector {
                 if (fullyQualifiedJavaType != null) {
                     introspectedColumn
                             .setFullyQualifiedJavaType(fullyQualifiedJavaType);
-                    introspectedColumn.setJdbcTypeName(javaTypeResolver
-                            .calculateJdbcTypeName(introspectedColumn));
+//                    introspectedColumn.setJdbcTypeName(javaTypeResolver
+//                            .calculateJdbcTypeName(introspectedColumn));
                 } else {
                     // type cannot be resolved. Check for ignored or overridden
                     boolean warn = true;

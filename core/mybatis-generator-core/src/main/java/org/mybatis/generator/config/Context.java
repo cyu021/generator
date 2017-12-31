@@ -89,8 +89,6 @@ public class Context extends PropertyHolder {
     private JavaFormatter javaFormatter;
 
     private XmlFormatter xmlFormatter;
-    
-    private String dbType;
 
     public Context(ModelType defaultModelType) {
         super();
@@ -566,12 +564,4 @@ public class Context extends PropertyHolder {
     public void setConnectionFactoryConfiguration(ConnectionFactoryConfiguration connectionFactoryConfiguration) {
         this.connectionFactoryConfiguration = connectionFactoryConfiguration;
     }
-
-	public String getDbType() {
-		return dbType;
-	}
-
-	public void setDbType(String dbType) {
-		this.dbType = dbType;
-	}
 }

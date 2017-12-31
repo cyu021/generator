@@ -45,6 +45,7 @@ import org.mybatis.generator.config.PluginConfiguration;
 import org.mybatis.generator.config.PropertyRegistry;
 import org.mybatis.generator.config.TableConfiguration;
 import org.mybatis.generator.internal.types.JavaTypeResolverDefaultImpl;
+import org.mybatis.generator.internal.types.JavaTypeResolverOracleImpl;
 import org.mybatis.generator.runtime.dynamic.sql.IntrospectedTableMyBatis3DynamicSqlImpl;
 
 /**
@@ -200,6 +201,14 @@ public class ObjectFactory {
             }
         } else {
             type = JavaTypeResolverDefaultImpl.class.getName();
+        }
+        
+        String dbType = context.getDbType();
+        dbType = (dbType == null) ? null : dbType.trim();
+        if(dbType != null && dbType.length() > 0) {
+        	if("oracle".equalsIgnoreCase(dbType)) {
+        		type = JavaTypeResolverOracleImpl.class.getName();
+        	}
         }
 
         JavaTypeResolver answer = (JavaTypeResolver) createInternalObject(type);

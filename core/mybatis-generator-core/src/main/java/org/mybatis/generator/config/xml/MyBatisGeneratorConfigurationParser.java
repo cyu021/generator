@@ -204,6 +204,8 @@ public class MyBatisGeneratorConfigurationParser {
                 parseJavaClientGenerator(context, childNode);
             } else if ("table".equals(childNode.getNodeName())) { //$NON-NLS-1$
                 parseTable(context, childNode);
+            } else if ("dbType".equals(childNode.getNodeName())) { //$NON-NLS-1$
+            	parseDbType(context, childNode);
             }
         }
     }
@@ -762,6 +764,12 @@ public class MyBatisGeneratorConfigurationParser {
                 parseProperty(commentGeneratorConfiguration, childNode);
             }
         }
+    }
+
+    protected void parseDbType(Context context, Node node) {
+        Properties attributes = parseAttributes(node);
+        String type = attributes.getProperty("type"); //$NON-NLS-1$
+        context.setDbType(type);
     }
 
     protected void parseConnectionFactory(Context context, Node node) {
